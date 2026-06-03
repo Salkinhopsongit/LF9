@@ -1,90 +1,109 @@
-# IPv6 Netzwerk mit Cisco Packet Tracer
+# Streamline IPv6 Netzwerk - Vollständige Dokumentation
 
-Dieses Repository dokumentiert die Einrichtung und Konfiguration eines IPv6-Netzwerks mit Cisco Packet Tracer.
+## 📋 Projektübersicht
 
-## Projektbeschreibung
+**Auftraggeber:** Firma Streamline  
+**Projektziel:** Sichere IPv6-Netzwerk-Infrastruktur mit automatisierter Konfiguration  
+**Status:** In Bearbeitung
 
-In diesem Projekt wird ein funktionales IPv6-Netzwerk aufgebaut, konfiguriert und getestet. Das Projekt zeigt:
+## 🎯 Anforderungen
 
-- Grundlagen von IPv6-Adressierung
-- Konfiguration von Routern und Switches
-- Statische und dynamische Routing-Protokolle
-- VLAN-Konfiguration
-- Netzwerk-Tests und Validierung
+### MUST-HAVE
 
-## Inhaltsverzeichnis
+#### 1. ACL IPv6 - Zugriffskontrolle
+- SSH-Zugang nur von Hamburg
+- HTTP/HTTPS für Hamburg (beide Protokolle)
+- HTTPS nur für Lübeck
+- Dokumentation aller Regeln
 
-- [Anforderungen](#anforderungen)
-- [Netzwerk-Topologie](#netzwerk-topologie)
-- [Konfigurationsschritte](#konfigurationsschritte)
-- [Dateien](#dateien)
-- [Ressourcen](#ressourcen)
+#### 2. DHCPv6 - SLAAC mit Server
+- Implementierung "SLAAC with DHCPv6-Server" auf Routern
+- Konfigurationen in IPAM dokumentieren
 
-## Anforderungen
+#### 3. OSPFv3 - Dynamisches Routing
+- Prozess-ID: 42
+- Area: 0
+- Router-IDs: 1.1.1.1 bis 4.4.4.4
+- Ersatz für statische Routen
 
-- Cisco Packet Tracer (Version 8.0 oder neuer)
-- Grundkenntnisse in Netzwerkkonfiguration
-- Verständnis von IPv6-Adressierung
+### SHOULD-HAVE
 
-## Netzwerk-Topologie
+- Mindestens eine zusätzliche Sicherheitsregel
+- DHCPv6 Stateful-Modus Hamburg
+- IPAM-Dokumentation
 
-```
-┌─────────────┐       ┌─────────────┐
-│   Router1   │───────│   Router2   │
-│ (FE80::1/10)│       │ (FE80::2/10)│
-└──────┬──────┘       └──────┬──────┘
-       │                     │
-   ┌───┴──────┐          ┌───┴──────┐
-   │  Switch1 │          │  Switch2 │
-   └───┬──────┘          └───┬──────┘
-       │                     │
-  ┌────┴─────────┐      ┌────┴─────────┐
-  │   PC1        │      │   PC2        │
-  │ (2001:db8::1)│      │ (2001:db8::2)│
-  └──────────────┘      └──────────────┘
-```
+### COULD-HAVE
 
-## Konfigurationsschritte
+- Zentrale DHCPv6-Lösung (Berlin-Server oder zentraler Router)
+- Relay-Agent Konfiguration (Hinweis: PT-Limitation dokumentieren)
 
-Siehe die detaillierte Dokumentation in den folgenden Dateien:
-
-- [Schritt 1: Topologie aufbau](./docs/01_topologie.md)
-- [Schritt 2: Router-Konfiguration](./docs/02_router_config.md)
-- [Schritt 3: PC-Konfiguration](./docs/03_pc_config.md)
-- [Schritt 4: Routing-Setup](./docs/04_routing.md)
-- [Schritt 5: Tests und Validierung](./docs/05_tests.md)
-
-## Dateien
+## 📁 Projektstruktur
 
 ```
-├── README.md                          # Diese Datei
+Streamline-IPv6-Netzwerk/
 ├── docs/
-│   ├── 01_topologie.md               # Topologie-Aufbau
-│   ├── 02_router_config.md           # Router-Konfiguration
-│   ├── 03_pc_config.md               # PC-Konfiguration
-│   ├── 04_routing.md                 # Routing-Protokolle
-│   └── 05_tests.md                   # Tests und Validierung
+│   ├── 01_anforderungen.md
+│   ├── 02_netzwerk_topologie.md
+│   ├── 03_ipv6_adressen.md
+│   ├── 04_acl_konfiguration.md
+│   ├── 05_dhcpv6_setup.md
+│   ├── 06_ospfv3_routing.md
+│   ├── 07_ipam_dokumentation.md
+│   └── 08_testing_validierung.md
 ├── config/
-│   ├── router1_config.txt            # Konfiguration Router 1
-│   ├── router2_config.txt            # Konfiguration Router 2
-│   └── ipv6_adressen.csv             # IPv6 Adressliste
-├── packet_tracer/
-│   └── ipv6_netzwerk.pkt             # Packet Tracer Datei
-└── scripts/
-    └── test_netzwerk.sh              # Test-Skript
+│   ├── router_hamburg.txt
+│   ├── router_luebeck.txt
+│   ├── router_berlin.txt
+│   ├── router_backup.txt
+│   ├── acl_rules.txt
+│   └── ospfv3_config.txt
+├── ipam/
+│   ├── adressplan.csv
+│   ├── dhcpv6_pools.csv
+│   └── routing_tabellen.csv
+├── testing/
+│   ├── test_plan.md
+│   ├── test_results.md
+│   └── validation_checklist.md
+└── README.md
 ```
 
-## Ressourcen
+## 🏢 Standorte
 
-- [IPv6 Wikipedia](https://de.wikipedia.org/wiki/IPv6)
-- [Cisco IPv6 Dokumentation](https://www.cisco.com/c/en/us/support/docs/ip/ip-version-6-ipv6/index.html)
-- [Packet Tracer Tutorials](https://www.netacad.com)
+| Standort | Stadt | Router | LAN-Subnetz | WAN-IP |
+|----------|-------|--------|------------|--------|
+| Hauptsitz | Hamburg | Router-HH | 2001:db8:10::/64 | 2001:db8:100::1/64 |
+| Zweigstelle | Lübeck | Router-LB | 2001:db8:20::/64 | 2001:db8:100::2/64 |
+| Serverraum | Berlin | Router-BE | 2001:db8:30::/64 | 2001:db8:100::3/64 |
+| Backup | --- | Router-BK | 2001:db8:40::/64 | 2001:db8:100::4/64 |
 
-## Lizenz
+## 📊 Zeitplan
 
-Dieses Projekt ist Open Source und steht unter der MIT-Lizenz.
+| Phase | Aufgabe | Status |
+|-------|---------|--------|
+| 1 | Anforderungsanalyse | ✅ |
+| 2 | Netzwerkdesign | 🔄 |
+| 3 | ACL-Konfiguration | 🔄 |
+| 4 | DHCPv6-Setup | 🔄 |
+| 5 | OSPFv3-Implementation | 🔄 |
+| 6 | Testing & Validierung | ⏳ |
+| 7 | Dokumentation | ⏳ |
+| 8 | Leistungsnachweis | ⏳ |
+
+## 🔗 Dokumentation
+
+Folgen Sie den Schritten in dieser Reihenfolge:
+
+1. **[Anforderungen](./docs/01_anforderungen.md)** - Detaillierte Anforderungsanalyse
+2. **[Topologie](./docs/02_netzwerk_topologie.md)** - Netzwerk-Architektur
+3. **[IPv6-Adressen](./docs/03_ipv6_adressen.md)** - Adressierungsplan
+4. **[ACL](./docs/04_acl_konfiguration.md)** - Zugriffskontrolle
+5. **[DHCPv6](./docs/05_dhcpv6_setup.md)** - DHCP-Konfiguration
+6. **[OSPFv3](./docs/06_ospfv3_routing.md)** - Routing-Protokoll
+7. **[IPAM](./docs/07_ipam_dokumentation.md)** - IP-Adressverwaltung
+8. **[Testing](./docs/08_testing_validierung.md)** - Validierung
 
 ---
 
-**Erstellt**: 2026-06-03  
-**Autor**: Salkinhopsongit
+**Letzte Aktualisierung:** 2026-06-03  
+**Projektleitung:** Salkinhopsongit
