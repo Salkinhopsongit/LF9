@@ -1,0 +1,57 @@
+! ============================================
+! Router1 Konfiguration - IPv6 Netzwerk
+! ============================================
+! Erstellt: 2026-06-03
+! Hostname: Router1
+
+enable
+configure terminal
+
+! ============================================
+! Hostname konfigurieren
+! ============================================
+hostname Router1
+
+! ============================================
+! IPv6 aktivieren
+! ============================================
+ipv6 unicast-routing
+
+! ============================================
+! Interface Ge0/0 konfigurieren
+! Verbindung zu Router2 (WAN)
+! ============================================
+interface GigabitEthernet 0/0
+  description Verbindung zu Router2
+  ipv6 address 2001:db8:1::1/64
+  no shutdown
+  exit
+
+! ============================================
+! Interface Ge0/1 konfigurieren
+! Verbindung zu Switch1 (LAN)
+! ============================================
+interface GigabitEthernet 0/1
+  description Verbindung zu Switch1 und Local PCs
+  ipv6 address 2001:db8:10::1/64
+  no shutdown
+  exit
+
+! ============================================
+! Statische Route für Subnetz 2 hinzufügen
+! ============================================
+ipv6 route 2001:db8:20::/64 2001:db8:1::2
+
+! ============================================
+! Konfiguration speichern
+! ============================================
+end
+write memory
+copy running-config startup-config
+
+! ============================================
+! Verifikationsbefehle (manuell ausführen)
+! ============================================
+! show ipv6 interface brief
+! show ipv6 route
+! ping 2001:db8:1::2
