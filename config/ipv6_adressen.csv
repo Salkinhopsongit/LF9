@@ -1,0 +1,9 @@
+Gerätetyp,Geräte-Name,Interface,IPv6-Adresse,Präfixlänge,Beschreibung,Bereich
+Router,Router1,GigabitEthernet0/0,2001:db8:1::1,64,Verbindung zu Router2,WAN
+Router,Router1,GigabitEthernet0/1,2001:db8:10::1,64,Verbindung zu Switch1,LAN1-Gateway
+Router,Router2,GigabitEthernet0/0,2001:db8:1::2,64,Verbindung zu Router1,WAN
+Router,Router2,GigabitEthernet0/1,2001:db8:20::1,64,Verbindung zu Switch2,LAN2-Gateway
+PC,PC1,FastEthernet0,2001:db8:10::10,64,PC im Subnetz 1,LAN1
+PC,PC2,FastEthernet0,2001:db8:10::11,64,PC im Subnetz 1,LAN1
+PC,PC3,FastEthernet0,2001:db8:20::10,64,PC im Subnetz 2,LAN2
+PC,PC4,FastEthernet0,2001:db8:20::11,64,PC im Subnetz 2,LAN2
