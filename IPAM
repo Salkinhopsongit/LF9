@@ -1,0 +1,30 @@
+IPAM - Standorte & Lokale Netzwerke (Global Unicast Address)				
+Lernfeld 9 - Projekt-Dokumentation (IPv6-Schema)				
+				
+Standort / LAN	Zweck	IPv6-Netzadresse	Gateway (Router)	Beispiel-IP für Endgerät
+Hamburg (VLAN 10)	Client-Netz 1	2001:db8:10::/64	2001:db8:10::1	2001:db8:10::10 (PC2)
+Hamburg (VLAN 20)	Client-Netz 2	2001:db8:20::/64	2001:db8:20::1	2001:db8:20::10 (PC3)
+Lübeck (VLAN 30)	Client-Netz 1	2001:db8:30::/64	2001:db8:30::1	2001:db8:30::10 (PC0)
+Lübeck (VLAN 40)	Client-Netz 2	2001:db8:40::/64	2001:db8:40::1	2001:db8:40::10 (PC1)
+Berlin (VLAN 50)	Server-Netz	2001:db8:50::/64	2001:db8:50::1	2001:db8:50::100 (Server0)
+München (VLAN 60)	Server-Netz	2001:db8:60::/64	2001:db8:60::1	2001:db8:60::100 (Server1)
+
+IPAM - WAN-Transportnetze (Unique Local Address)			
+Vollvermaschte Router-Infrastruktur (Router 1 bis Router 4)			
+			
+WAN-Verbindung	IPv6-Netzadresse	IP-Adresse Seite A	IP-Adresse Seite B
+Hamburg ➔ Lübeck	fd00:0:0:1::/64	fd00:0:0:1::1 (Router1)	fd00:0:0:1::2 (Router2)
+Hamburg ➔ Berlin	fd00:0:0:2::/64	fd00:0:0:2::1 (Router1)	fd00:0:0:2::2 (Router3)
+Hamburg ➔ München	fd00:0:0:3::/64	fd00:0:0:3::1 (Router1)	fd00:0:0:3::2 (Router4)
+Lübeck ➔ Berlin	fd00:0:0:4::/64	fd00:0:0:4::1 (Router2)	fd00:0:0:4::2 (Router3)
+Lübeck ➔ München	fd00:0:0:5::/64	fd00:0:0:5::1 (Router2)	fd00:0:0:5::2 (Router4)
+Berlin ➔ München	fd00:0:0:6::/64	fd00:0:0:6::1 (Router3)	fd00:0:0:6::2 (Router4)
+
+IPAM - Switch-Management-Adressen (In-Band / SSH)			
+Erreichbarkeit der Multilayer-Switches über das lokale VLAN-Interface			
+			
+Switch-ID	Standort	Management-IP (VLAN Interface)	Standard-Gateway
+Multilayer Switch3	Hamburg	2001:db8:10::fe	2001:db8:10::1
+Multilayer Switch4	Lübeck	2001:db8:30::fe	2001:db8:30::1
+Multilayer Switch2	Berlin	2001:db8:50::fe	2001:db8:50::1
+Multilayer Switch1	München	2001:db8:60::fe	2001:db8:60::1
