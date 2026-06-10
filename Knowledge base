@@ -1,0 +1,14 @@
+1. ACL (Access Control List)
+What is it? The network's security guard (or guest list).
+
+What does it do? It checks data packets and says either "You can pass" (Permit) or "You are blocked" (Deny), based on their IP address or port.
+
+2. DHCPv6
+What is it? The distribution office for IPv6 addresses.
+
+What does it do? It automatically hands out the super long IPv6 addresses and network settings (like DNS) to computers and phones so you don't have to type them in manually.
+
+3. OSPFv3
+What is it? The GPS/SatNav for routers.
+
+What does it do? It allows routers to talk to each other and automatically calculate the fastest route for data packets through an IPv6 network (preferring fast fiber over slow cables).
