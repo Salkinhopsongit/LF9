@@ -1,352 +1,341 @@
-1. ACL (Access Control List)
-What is an ACL?
+# Network Administration Knowledge Base
 
-An Access Control List (ACL) is a set of rules used on routers, switches, and firewalls to control which network traffic is allowed or denied.
+---
 
-Think of an ACL as a security guard checking a guest list at the entrance of a building. Every person (or packet) is checked against a list of rules before being allowed to enter.
+## 1. ACL (Access Control List)
 
-Its main purpose is to improve network security by filtering traffic.
+### What is an ACL?
 
-How does an ACL work?
+An **Access Control List (ACL)** is a set of rules used on routers, switches, and firewalls to control which network traffic is allowed or denied.
 
-Whenever a packet arrives at a router or switch, the ACL examines information such as:
+Think of an ACL as a **security guard checking a guest list** at the entrance of a building. Every person (or packet) is checked against a list of rules before being allowed to enter.
 
-Source IP address (where the packet came from)
-Destination IP address (where the packet is going)
-Protocol (TCP, UDP, ICMP, etc.)
-Port number (which service is being accessed)
+**Main purpose:** Improve network security by filtering traffic.
 
-The ACL processes rules from top to bottom.
+### How does an ACL work?
 
-Example:
+Whenever a packet arrives at a router or switch, the ACL examines:
 
-Rule	Action
-Permit traffic from 192.168.1.10	Allow
-Permit traffic from 192.168.1.20	Allow
-Deny all other traffic	Block
+- **Source IP address** — where the packet came from
+- **Destination IP address** — where the packet is going
+- **Protocol** — TCP, UDP, ICMP, etc.
+- **Port number** — which service is being accessed
 
-If a packet matches the first rule, it is immediately allowed and no further rules are checked.
+The ACL processes rules **from top to bottom**.
 
-Types of ACLs
-Standard ACL
+#### Example:
 
-A Standard ACL filters traffic based only on the source IP address.
+| Rule | Action |
+|------|--------|
+| Permit traffic from 192.168.1.10 | Allow |
+| Permit traffic from 192.168.1.20 | Allow |
+| Deny all other traffic | Block |
 
-Example:
+If a packet matches the first rule, it is **immediately allowed** and no further rules are checked.
 
-Block all traffic coming from 192.168.1.50.
+### Types of ACLs
 
-Advantages:
+#### Standard ACL
 
-Simple to configure
-Uses fewer router resources
+A **Standard ACL** filters traffic based **only on the source IP address**.
 
-Disadvantages:
+**Example:** Block all traffic coming from 192.168.1.50.
 
-Limited filtering capabilities
-Extended ACL
+**Advantages:**
+- ✓ Simple to configure
+- ✓ Uses fewer router resources
 
-An Extended ACL can filter based on:
+**Disadvantages:**
+- ✗ Limited filtering capabilities
 
-Source IP address
-Destination IP address
-Protocol type
-Port numbers
+#### Extended ACL
 
-Example:
+An **Extended ACL** can filter based on:
 
-Allow HTTPS traffic (port 443) from the Sales Department network to the company web server.
+- Source IP address
+- Destination IP address
+- Protocol type
+- Port numbers
 
-Advantages:
+**Example:** Allow HTTPS traffic (port 443) from the Sales Department network to the company web server.
 
-More precise control
-Better security
-Why are ACLs important?
+**Advantages:**
+- ✓ More precise control
+- ✓ Better security
+
+### Why are ACLs important?
 
 ACLs are commonly used to:
 
-Prevent unauthorized access
-Protect servers and sensitive data
-Restrict access to specific services
-Reduce unnecessary traffic
-Enforce company security policies
+- Prevent unauthorized access
+- Protect servers and sensitive data
+- Restrict access to specific services
+- Reduce unnecessary traffic
+- Enforce company security policies
 
-For example, a company may allow employees to access internal servers while blocking guests from reaching those same resources.
+*For example, a company may allow employees to access internal servers while blocking guests from reaching those same resources.*
 
-Key Benefits of ACLs
+### Key Benefits of ACLs
 
-✔ Improve security
+- ✔ Improve security
+- ✔ Control network traffic
+- ✔ Protect critical systems
+- ✔ Reduce network congestion
+- ✔ Enforce access policies
 
-✔ Control network traffic
+---
 
-✔ Protect critical systems
+## 2. DHCPv6 (Dynamic Host Configuration Protocol for IPv6)
 
-✔ Reduce network congestion
+### What is DHCPv6?
 
-✔ Enforce access policies
+**DHCPv6** is a protocol that automatically assigns IPv6 addresses and other network configuration information to devices.
 
-2. DHCPv6 (Dynamic Host Configuration Protocol for IPv6)
-What is DHCPv6?
+Think of DHCPv6 as a **distribution office** that gives every device the information it needs to communicate on the network.
 
-DHCPv6 is a protocol that automatically assigns IPv6 addresses and other network configuration information to devices.
+**Without DHCPv6:** Network administrators would need to manually configure every computer, phone, printer, and server.
 
-Think of DHCPv6 as a distribution office that gives every device the information it needs to communicate on the network.
+### Why is DHCPv6 necessary?
 
-Without DHCPv6, network administrators would need to manually configure every computer, phone, printer, and server.
+IPv6 addresses are **very long**:
 
-Why is DHCPv6 necessary?
-
-IPv6 addresses are very long.
-
-Example:
-
+```
 2001:db8:abcd:1234:5678:90ab:cdef:1234
+```
 
-Manually assigning addresses like this to hundreds or thousands of devices would be difficult and time-consuming.
+Manually assigning addresses like this to hundreds or thousands of devices would be **difficult and time-consuming**. DHCPv6 automates the process.
 
-DHCPv6 automates the process.
+### How DHCPv6 Works
 
-How DHCPv6 Works
-Step 1: Device Joins the Network
-
+#### Step 1: Device Joins the Network
 A device connects to the network.
 
-Step 2: Device Requests Configuration
-
+#### Step 2: Device Requests Configuration
 The device sends a request asking:
+- *Is there a DHCPv6 server available?*
 
-Is there a DHCPv6 server available?
-
-Step 3: DHCPv6 Server Responds
-
+#### Step 3: DHCPv6 Server Responds
 The server provides:
+- IPv6 address
+- DNS server addresses
+- Domain name
+- Additional network settings
 
-IPv6 address
-DNS server addresses
-Domain name
-Additional network settings
-Step 4: Device Configures Itself
-
+#### Step 4: Device Configures Itself
 The device applies the received information and becomes fully operational on the network.
 
-DHCPv6 Modes
-Stateful DHCPv6
+### DHCPv6 Modes
 
-In Stateful mode, the DHCPv6 server keeps track of every assigned address.
+#### Stateful DHCPv6
 
-Example:
+In **Stateful mode**, the DHCPv6 server **keeps track of every assigned address**.
 
-Device	IPv6 Address
-PC1	2001:db8::10
-PC2	2001:db8::11
+| Device | IPv6 Address |
+|--------|--------------|
+| PC1 | 2001:db8::10 |
+| PC2 | 2001:db8::11 |
 
 The server maintains a database showing which address belongs to which device.
 
-Advantages:
+**Advantages:**
+- ✓ Centralized management
+- ✓ Easy tracking and troubleshooting
 
-Centralized management
-Easy tracking and troubleshooting
-Stateless DHCPv6
+#### Stateless DHCPv6
 
-In Stateless mode, devices create their own IPv6 addresses.
+In **Stateless mode**, devices **create their own IPv6 addresses**.
 
 The DHCPv6 server only provides additional settings such as:
 
-DNS servers
-NTP servers
-Domain names
+- DNS servers
+- NTP servers
+- Domain names
 
-Advantages:
+**Advantages:**
+- ✓ Less administrative overhead
+- ✓ Simpler deployment
 
-Less administrative overhead
-Simpler deployment
-DHCPv6 and SLAAC
+### DHCPv6 and SLAAC
 
-IPv6 also supports SLAAC (Stateless Address Autoconfiguration).
+IPv6 also supports **SLAAC** (Stateless Address Autoconfiguration).
 
 With SLAAC:
+- The router advertises the network prefix
+- The device generates its own address
 
-The router advertises the network prefix.
-The device generates its own address.
-
-Example:
+**Example:**
 
 Router advertises:
-
+```
 2001:db8:1000::/64
+```
 
 The device automatically creates the remaining part of the address.
 
-This allows devices to configure themselves without requiring a DHCPv6 server.
+This allows devices to **configure themselves without requiring a DHCPv6 server**.
 
-Why is DHCPv6 important?
+### Why is DHCPv6 important?
 
 DHCPv6:
 
-Simplifies network administration
-Reduces configuration errors
-Supports large-scale networks
-Automates device deployment
-Provides centralized configuration management
-Key Benefits of DHCPv6
+- Simplifies network administration
+- Reduces configuration errors
+- Supports large-scale networks
+- Automates device deployment
+- Provides centralized configuration management
 
-✔ Automatic IPv6 address assignment
+### Key Benefits of DHCPv6
 
-✔ Reduced administrative workload
+- ✔ Automatic IPv6 address assignment
+- ✔ Reduced administrative workload
+- ✔ Fewer configuration errors
+- ✔ Centralized management
+- ✔ Scalable for large networks
 
-✔ Fewer configuration errors
+---
 
-✔ Centralized management
+## 3. OSPFv3 (Open Shortest Path First Version 3)
 
-✔ Scalable for large networks
+### What is OSPFv3?
 
-3. OSPFv3 (Open Shortest Path First Version 3)
-What is OSPFv3?
+**OSPFv3** is a dynamic routing protocol designed for **IPv6 networks**.
 
-OSPFv3 is a dynamic routing protocol designed for IPv6 networks.
-
-Think of OSPFv3 as a GPS navigation system for routers.
+Think of OSPFv3 as a **GPS navigation system for routers**.
 
 Instead of manually configuring routes, routers communicate with each other and automatically determine the best path for data to travel across the network.
 
-Why is OSPFv3 needed?
+### Why is OSPFv3 needed?
 
 Imagine a company network with several routers:
 
-        Router A
+```
+         Router A
             |
-        Router B
-       /        \
- Router C      Router D
+         Router B
+        /        \
+    Router C    Router D
+```
 
-Router A needs to send data to Router D.
+**Router A** needs to send data to **Router D**.
 
-Questions that must be answered:
+**Questions that must be answered:**
 
-Which routes are available?
-Which route is the fastest?
-What happens if a link fails?
+- Which routes are available?
+- Which route is the fastest?
+- What happens if a link fails?
 
-OSPFv3 automatically solves these problems.
+**OSPFv3 automatically solves these problems.**
 
-How OSPFv3 Works
-Step 1: Neighbor Discovery
+### How OSPFv3 Works
 
-Routers send Hello Packets to discover neighboring OSPF routers.
+#### Step 1: Neighbor Discovery
 
-If routers successfully exchange Hello packets, they become neighbors.
+- Routers send **Hello Packets** to discover neighboring OSPF routers
+- If routers successfully exchange Hello packets, they become **neighbors**
 
-Step 2: Exchange Topology Information
+#### Step 2: Exchange Topology Information
 
 Routers share information about:
 
-Connected networks
-Available links
-Link speeds
-Network status
+- Connected networks
+- Available links
+- Link speeds
+- Network status
 
 This information is distributed throughout the OSPF area.
 
-Step 3: Build the Link-State Database (LSDB)
+#### Step 3: Build the Link-State Database (LSDB)
 
-Each router creates a database containing a complete map of the network.
+Each router creates a database containing a **complete map of the network**.
 
-This database is called the:
+This database is called the: **Link-State Database (LSDB)**
 
-Link-State Database (LSDB)
+**Every router within the same OSPF area maintains an identical LSDB.**
 
-Every router within the same OSPF area maintains an identical LSDB.
+#### Step 4: Calculate the Best Path
 
-Step 4: Calculate the Best Path
+OSPFv3 uses **Dijkstra's Shortest Path First (SPF) Algorithm**.
 
-OSPFv3 uses Dijkstra's Shortest Path First (SPF) Algorithm.
+The algorithm calculates the route with the **lowest cost**.
 
-The algorithm calculates the route with the lowest cost.
+Cost is usually based on **link bandwidth**.
 
-Cost is usually based on link bandwidth.
+### Example: Path Selection
 
-Example:
+```
+          A
+         / \
+       10   50
+       /      \
+      B---10---C
+```
 
-      A
-     / \
-   10   50
-   /      \
-  B---10---C
+**Possible routes:**
 
-Possible routes:
+**Direct route:**
+- A → C = Cost 50
 
-Direct route:
+**Indirect route:**
+- A → B → C = Cost 20
 
-A → C = Cost 50
+**OSPF chooses:** A → B → C (lower total cost)
 
-Indirect route:
-
-A → B → C = Cost 20
-
-OSPF chooses:
-
-A → B → C
-
-because it has the lower total cost.
-
-Fast Failure Recovery
+### Fast Failure Recovery
 
 Suppose a fiber connection fails.
 
-Without dynamic routing:
+**Without dynamic routing:**
+- Administrators must manually update routes
 
-Administrators must manually update routes.
+**With OSPFv3:**
+1. Failure is detected
+2. Routers exchange updated information
+3. The SPF algorithm recalculates routes
+4. Traffic is redirected through an alternative path
 
-With OSPFv3:
+This process is called **convergence**.
 
-Failure is detected.
-Routers exchange updated information.
-The SPF algorithm recalculates routes.
-Traffic is redirected through an alternative path.
+**Fast convergence minimizes downtime.**
 
-This process is called convergence.
+### OSPF Areas
 
-Fast convergence minimizes downtime.
+Large networks are divided into smaller sections called **Areas**.
 
-OSPF Areas
+```
+            Area 0
+         (Backbone)
+          /      \
+     Area 1    Area 2
+```
 
-Large networks are divided into smaller sections called Areas.
+**Benefits:**
 
-Example:
+- Reduces routing overhead
+- Improves scalability
+- Speeds up route calculations
+- Decreases memory and CPU usage
 
-           Area 0
-          (Backbone)
-           /      \
-      Area 1    Area 2
+**Area 0 is always the backbone area** and connects all other areas.
 
-Benefits:
-
-Reduces routing overhead
-Improves scalability
-Speeds up route calculations
-Decreases memory and CPU usage
-
-Area 0 is always the backbone area and connects all other areas.
-
-Why is OSPFv3 important?
+### Why is OSPFv3 important?
 
 OSPFv3 enables routers to:
 
-Automatically learn routes
-Adapt to network changes
-Recover from failures
-Optimize traffic flow
-Support large IPv6 enterprise networks
-Key Benefits of OSPFv3
+- Automatically learn routes
+- Adapt to network changes
+- Recover from failures
+- Optimize traffic flow
+- Support large IPv6 enterprise networks
 
-✔ Automatic route discovery
+### Key Benefits of OSPFv3
 
-✔ Dynamic path selection
+- ✔ Automatic route discovery
+- ✔ Dynamic path selection
+- ✔ Fast network convergence
+- ✔ Native IPv6 support
+- ✔ Efficient use of bandwidth
+- ✔ Scalable for large organizations
 
-✔ Fast network convergence
+---
 
-✔ Native IPv6 support
-
-✔ Efficient use of bandwidth
-
-✔ Scalable for large organizations
+*Last Updated: June 17, 2026*
